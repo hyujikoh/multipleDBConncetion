@@ -1,5 +1,6 @@
 package com.hyujikoh.multipledbconnection.config;
 
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import java.util.HashMap;
 import java.util.Map;
@@ -85,5 +86,15 @@ public class DataSourceConfig {
 		em.afterPropertiesSet(); // 필수로 설정
 
 		return em.getObject();
+	}
+
+	public void setDataSource(String factoryCode) {
+		EntityManagerFactory entityManagerFactory = entityManagerFactoryForDatabase(factoryCode);
+		// EntityManagerFactory를 설정하여 JPA를 사용할 수 있도록 설정
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		// EntityManager를 사용하여 데이터베이스에 접근
+		// ...
+		entityManager.close();
+		entityManagerFactory.close();
 	}
 }

@@ -18,14 +18,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
 	private final DataSourceConfig dataSourceConfig;
+	private final UserRepository userRepository;
 
 		public List<User> findAll(String factoryCode){
-			EntityManagerFactory emf = dataSourceConfig.entityManagerFactoryForDatabase(factoryCode);
-			EntityManager em = emf.createEntityManager();
-
-			// JpaRepositoryFactory를 사용하여 동적으로 레포지토리 생성
-			JpaRepositoryFactory factory = new JpaRepositoryFactory(em);
-			UserRepository repository = factory.getRepository(UserRepository.class);
-				return repository.findAll();
+			dataSourceConfig.setDataSource(factoryCode);
+				return userRepository.findAll();
 		}
 }

@@ -34,7 +34,7 @@ public class MultipleDBConnectionTest {
 
 	@Test
 	public void isActive(){
-		String factoryCode = "factory1";
+		String factoryCode = "factoryb";
 		List<User> userList = userService.findAll(factoryCode);
 	}
 }
