@@ -2,6 +2,7 @@ package com.hyujikoh.multipledbconnection.domain.user.controller;
 
 import com.hyujikoh.multipledbconnection.domain.user.entity.User;
 import com.hyujikoh.multipledbconnection.domain.user.service.UserService;
+import com.hyujikoh.multipledbconnection.domain.user.service.UserServiceImpl;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
